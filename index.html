@@ -12,13 +12,20 @@
   <body>
     <div class="container">
       <h1>WorkTube</h1>
-      <input placeholder="Artist name">
-      <button id="play">Play!</button>
+      <form role="form" ng-submit="submit(true)">
+	<div class="form-group">
+	  <input placeholder="Artist name" ng-model="artist">
+	  <button type="submit" class="btn btn-default">Play!</button>
+	</div>
+      </form>
       <div id="player"></div>
       <div id="playList">
-	<div>foo</div>
-	<div>bar</div>
-	<div>baz</div>
+	<div class="list-item" ng-repeat="track in tracks">
+          <a class="clearfix" ng-click="click($index)" ng-class="active_class($index)">
+              <img ng-src="{{ track.image[0]['#text'] }}" class="pull-left">
+              <b class="pull-left">{{ track.name }}</b>
+            </a>
+        </div>
       </div>
     </div><!-- .container -->
   </body>
